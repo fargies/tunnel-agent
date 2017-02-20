@@ -137,7 +137,7 @@ TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
   connectReq.once('upgrade', onUpgrade)   // for v0.6
   connectReq.once('connect', onConnect)   // for v0.7 or later
   connectReq.once('error', onError)
-  connectReq.setTimeout(options.timeout || 15000, function(){
+  connectReq.setTimeout(self.proxyOptions.timeout || options.timeout || 15000, function(){
     connectReq.abort();
   });
   connectReq.end()
